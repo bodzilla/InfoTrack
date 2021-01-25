@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "InfoTrack.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "\"land registry search\" www.infotrack.co.uk"
+    }
+  }
+}

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\InfoTrack.Core\InfoTrack.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>

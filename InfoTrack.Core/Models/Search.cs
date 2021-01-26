@@ -13,6 +13,9 @@ namespace InfoTrack.Core.Models
         /// <inheritdoc />
         public int Id { get; set; }
 
+        /// <inheritdoc />
+        public DateTime EntityCreated { get; set; }
+
         public SearchEngine SearchEngine { get; set; }
 
         public string Query

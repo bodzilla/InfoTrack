@@ -8,6 +8,9 @@ namespace InfoTrack.Core.Models
         /// <inheritdoc />
         public int Id { get; set; }
 
+        /// <inheritdoc />
+        public DateTime EntityCreated { get; set; }
+
         public Search Search { get; set; }
 
         public string Title { get; set; }

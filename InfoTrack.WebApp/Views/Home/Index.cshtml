@@ -13,9 +13,7 @@
     </div>
     <div class="form-group">
         <label asp-for="SearchEngine"></label>
-        <select asp-for="SearchEngine" class="form-control" asp-items="Html.GetEnumSelectList<SearchEngine>()">
-            <option>Select..</option>
-        </select>
+        <select asp-for="SearchEngine" class="form-control" asp-items="Html.GetEnumSelectList<SearchEngine>()"></select>
         <span asp-validation-for="SearchEngine" class="text-danger"></span>
         <div class="form-group">
             <input type="submit" value="Search" class="btn btn-primary" />

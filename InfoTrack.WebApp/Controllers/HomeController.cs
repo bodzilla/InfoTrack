@@ -29,16 +29,10 @@ namespace InfoTrack.WebApp.Controllers
 
         public async Task<ActionResult> Search(Search search)
         {
-            search = await _searchService.Add(search);
             var articles = (await _scraperService.FindMatchingArticles(search)).ToList();
+            search = await _searchService.Add(search);
             foreach (var article in articles) await _articleService.Add(article);
-
-            var resultViewModel = new ResultViewModel
-            {
-                Search = search,
-                Articles = articles
-            };
-
+            var resultViewModel = new ResultViewModel { Search = search, Articles = articles };
             return View(resultViewModel);
         }
 

@@ -4,7 +4,7 @@ using InfoTrack.Core.Models;
 
 namespace InfoTrack.Core.Contracts
 {
-    public interface ISearchService
+    public interface ISearchRepository
     {
         Task<IEnumerable<Search>> GetAll();
 

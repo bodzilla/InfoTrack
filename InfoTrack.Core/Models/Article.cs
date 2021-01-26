@@ -17,6 +17,6 @@ namespace InfoTrack.Core.Models
 
         public int Rank { get; set; }
 
-        public Uri Uri { get; set; }
+        public Uri Url { get; set; }
     }
 }

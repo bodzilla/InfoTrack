@@ -7,14 +7,21 @@ namespace InfoTrack.Core.Services
 {
     public sealed class ArticleService : IArticleService
     {
-        private readonly IRepository<Article> _articleRepository;
+        private readonly IArticleRepository _articleRepository;
 
-        public ArticleService(IRepository<Article> articleRepository) => _articleRepository = articleRepository;
+        public ArticleService(IArticleRepository articleRepository) => _articleRepository = articleRepository;
 
         /// <inheritdoc />
         public async Task<IEnumerable<Article>> GetAll()
         {
             var articles = await _articleRepository.GetAll();
+            return articles;
+        }
+
+        /// <inheritdoc />
+        public async Task<IEnumerable<Article>> GetAllWithParent()
+        {
+            var articles = await _articleRepository.GetAllWithParent();
             return articles;
         }
 

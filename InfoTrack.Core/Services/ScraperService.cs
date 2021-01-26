@@ -15,11 +15,18 @@ namespace InfoTrack.Core.Services
         public ScraperService(IScraper scraper) => _scraper = scraper;
 
         /// <inheritdoc />
+        public string ConstructScrapeUrl(string query)
+        {
+            var scrapeUrl = _scraper.ConstructScrapeUrl(query);
+            return scrapeUrl;
+        }
+
+        /// <inheritdoc />
         public async Task<IEnumerable<Article>> FindMatchingArticles(Search search)
         {
             var articles = new List<Article>();
             var baseUrl = UriHelper.ToBaseUrl(search.Uri);
-            var scrapedArticles = await _scraper.GetArticles(search.Query);
+            var scrapedArticles = await _scraper.GetArticles(search.Query, search.ScrapeUrl);
             if (scrapedArticles == null) return articles;
 
             for (int i = 0; i < scrapedArticles.Count; i++)
@@ -34,7 +41,7 @@ namespace InfoTrack.Core.Services
                     Search = search,
                     Title = scrapedTitle,
                     Rank = i + 1, // Users will count starting from 1, not 0.
-                    Uri = new Uri(scrapedUrl)
+                    Url = new Uri(scrapedUrl)
                 };
 
                 articles.Add(article);

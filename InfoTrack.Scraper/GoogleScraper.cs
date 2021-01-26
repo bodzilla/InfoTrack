@@ -10,11 +10,18 @@ namespace InfoTrack.Scraper
 
         public GoogleScraper(int resultLimit) => _resultLimit = resultLimit;
 
-        public async Task<HtmlNodeCollection> GetArticles(string query)
+        /// <inheritdoc />
+        public string ConstructScrapeUrl(string query)
         {
             var formattedQuery = query.Replace(' ', '+');
             var url = $"http://www.google.co.uk/search?num={_resultLimit}&q={formattedQuery}";
-            var document = await new HtmlWeb().LoadFromWebAsync(url);
+            return url;
+        }
+
+        /// <inheritdoc />
+        public async Task<HtmlNodeCollection> GetArticles(string query, string scrapeUrl)
+        {
+            var document = await new HtmlWeb().LoadFromWebAsync(scrapeUrl);
             var articles = document.DocumentNode.SelectNodes(@"//div[@class=""yuRUbf""]");
             return articles;
         }

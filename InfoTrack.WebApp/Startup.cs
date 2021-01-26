@@ -1,7 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using InfoTrack.Core.Contracts;
-using InfoTrack.Core.Models;
 using InfoTrack.Core.Services;
 using InfoTrack.Persistence;
 using InfoTrack.Scraper;
@@ -29,8 +28,8 @@ namespace InfoTrack.WebApp
 
             services.AddScoped<IDbConnection>(x => new SqlConnection(connection));
             services.AddScoped<IScraper, GoogleScraper>(x => new GoogleScraper(resultLimit));
-            services.AddScoped<IRepository<Search>, SearchRepository>();
-            services.AddScoped<IRepository<Article>, ArticleRepository>();
+            services.AddScoped<ISearchRepository, SearchRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IScraperService, ScraperService>();
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IArticleService, ArticleService>();

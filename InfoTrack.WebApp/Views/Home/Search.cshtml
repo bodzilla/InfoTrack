@@ -1,10 +1,13 @@
-﻿@model ResultViewModel
+﻿@model Search
 @{ ViewData["Title"] = "Search Results"; }
 
 <h1>@ViewData["Title"]</h1>
 
-<label>@Model.Search.Query</label>
-<label>@Model.Search.Url</label>
+<div>@Model.Query</div>
+<div>@Model.Url</div>
+<div>
+    <a href="@Model.ScrapeUrl">@Model.ScrapeUrl</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +24,9 @@
                 <tr>
                     <th scope="row">@article.Rank</th>
                     <td>@article.Title</td>
-                    <td>@article.Uri</td>
+                    <td>
+                        <a href="@article.Url">@article.Url</a>
+                    </td>
                 </tr>
             }
         }

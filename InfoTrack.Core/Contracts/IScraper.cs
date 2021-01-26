@@ -5,6 +5,8 @@ namespace InfoTrack.Core.Contracts
 {
     public interface IScraper
     {
-        Task<HtmlNodeCollection> GetArticles(string query);
+        string ConstructScrapeUrl(string query);
+
+        Task<HtmlNodeCollection> GetArticles(string query, string scrapeUrl);
     }
 }

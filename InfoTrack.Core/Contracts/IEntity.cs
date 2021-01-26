@@ -6,6 +6,6 @@ namespace InfoTrack.Core.Contracts
     {
         public int Id { get; set; }
 
-        public DateTime EntityCreated { get; }
+        public DateTime EntityCreated { get; set; }
     }
 }

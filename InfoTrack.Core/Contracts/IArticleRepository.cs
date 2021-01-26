@@ -4,7 +4,7 @@ using InfoTrack.Core.Models;
 
 namespace InfoTrack.Core.Contracts
 {
-    public interface IArticleService
+    public interface IArticleRepository
     {
         Task<IEnumerable<Article>> GetAll();
 

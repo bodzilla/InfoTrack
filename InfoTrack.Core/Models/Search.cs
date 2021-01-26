@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using InfoTrack.Core.Contracts;
 using InfoTrack.Core.Enums;
 using InfoTrack.Core.Helpers;
@@ -9,6 +10,8 @@ namespace InfoTrack.Core.Models
     {
         private string _query;
         private string _url;
+
+        public Search() => Articles = new List<Article>();
 
         /// <inheritdoc />
         public int Id { get; set; }
@@ -35,5 +38,9 @@ namespace InfoTrack.Core.Models
         }
 
         public Uri Uri { get; private set; }
+
+        public string ScrapeUrl { get; set; }
+
+        public IList<Article> Articles { get; set; }
     }
 }

@@ -7,14 +7,21 @@ namespace InfoTrack.Core.Services
 {
     public sealed class SearchService : ISearchService
     {
-        private readonly IRepository<Search> _searchRepository;
+        private readonly ISearchRepository _searchRepository;
 
-        public SearchService(IRepository<Search> searchRepository) => _searchRepository = searchRepository;
+        public SearchService(ISearchRepository searchRepository) => _searchRepository = searchRepository;
 
         /// <inheritdoc />
         public async Task<IEnumerable<Search>> GetAll()
         {
             var searches = await _searchRepository.GetAll();
+            return searches;
+        }
+
+        /// <inheritdoc />
+        public async Task<IEnumerable<Search>> GetAllWithChildren()
+        {
+            var searches = await _searchRepository.GetAllWithChildren();
             return searches;
         }
 

@@ -1,7 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using InfoTrack.Core.Contracts;
+using InfoTrack.Core.Models;
+using InfoTrack.Core.Services;
+using InfoTrack.Persistence;
+using InfoTrack.Scraper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,20 +15,27 @@ namespace InfoTrack.WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            new DapperConfiguration().ConfigureMappings();
             services.AddControllersWithViews();
+
+            var connection = Configuration.GetConnectionString("DefaultConnection");
+            var resultLimit = int.Parse(Configuration.GetSection("ResultLimit").Value);
+
+            services.AddScoped<IDbConnection>(x => new SqlConnection(connection));
+            services.AddScoped<IScraper, GoogleScraper>(x => new GoogleScraper(resultLimit));
+            services.AddScoped<IRepository<Search>, SearchRepository>();
+            services.AddScoped<IRepository<Article>, ArticleRepository>();
+            services.AddScoped<IScraperService, ScraperService>();
+            services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IArticleService, ArticleService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,18 +46,12 @@ namespace InfoTrack.WebApp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"); });
         }
     }
 }

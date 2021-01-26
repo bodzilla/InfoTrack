@@ -9,14 +9,9 @@ namespace InfoTrack.Persistence
 {
     public sealed class SearchRepository : IRepository<Search>
     {
-        private readonly DapperConfiguration _dapperConfiguration;
         private readonly IDbConnection _connection;
 
-        public SearchRepository(DapperConfiguration dapperConfiguration, IDbConnection connection)
-        {
-            _dapperConfiguration = dapperConfiguration;
-            _connection = connection;
-        }
+        public SearchRepository(IDbConnection connection) => _connection = connection;
 
         /// <inheritdoc />
         public async Task<IEnumerable<Search>> GetAll()

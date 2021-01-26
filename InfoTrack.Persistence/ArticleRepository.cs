@@ -9,14 +9,9 @@ namespace InfoTrack.Persistence
 {
     public sealed class ArticleRepository : IRepository<Article>
     {
-        private readonly DapperConfiguration _dapperConfiguration;
         private readonly IDbConnection _connection;
 
-        public ArticleRepository(DapperConfiguration dapperConfiguration, IDbConnection connection)
-        {
-            _dapperConfiguration = dapperConfiguration;
-            _connection = connection;
-        }
+        public ArticleRepository(IDbConnection connection) => _connection = connection;
 
         /// <inheritdoc />
         public async Task<IEnumerable<Article>> GetAll()

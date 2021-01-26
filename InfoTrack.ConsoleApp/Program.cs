@@ -15,9 +15,9 @@ namespace InfoTrack.ConsoleApp
         private static async Task Main(string[] args)
         {
             var uri = new Uri(UriHelper.ToUri(args[1]));
-            var dapperConfiguration = new DapperConfiguration();
-            var searchRepository = new SearchRepository(dapperConfiguration, new SqlConnection("Data Source=localhost;Initial Catalog=InfoTrack;Integrated Security=True"));
-            var articleRepository = new ArticleRepository(dapperConfiguration, new SqlConnection("Data Source=localhost;Initial Catalog=InfoTrack;Integrated Security=True"));
+            new DapperConfiguration().ConfigureMappings();
+            var searchRepository = new SearchRepository(new SqlConnection("Data Source=localhost;Initial Catalog=InfoTrack;Integrated Security=True"));
+            var articleRepository = new ArticleRepository(new SqlConnection("Data Source=localhost;Initial Catalog=InfoTrack;Integrated Security=True"));
 
             var search = new Search
             {

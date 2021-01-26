@@ -5,6 +5,6 @@ namespace InfoTrack.Persistence
 {
     public sealed class DapperConfiguration
     {
-        public DapperConfiguration() => SqlMapper.AddTypeHandler(new UriMapper());
+        public void ConfigureMappings() => SqlMapper.AddTypeHandler(new UriMapper());
     }
 }

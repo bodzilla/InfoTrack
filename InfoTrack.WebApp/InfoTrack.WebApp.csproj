@@ -4,4 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InfoTrack.Core\InfoTrack.Core.csproj" />
+    <ProjectReference Include="..\InfoTrack.Persistence\InfoTrack.Persistence.csproj" />
+    <ProjectReference Include="..\InfoTrack.Scraper\InfoTrack.Scraper.csproj" />
+  </ItemGroup>
+
 </Project>

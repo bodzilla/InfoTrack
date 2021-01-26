@@ -1,5 +1,3 @@
-using System;
-
 namespace InfoTrack.WebApp.Models
 {
     public class ErrorViewModel

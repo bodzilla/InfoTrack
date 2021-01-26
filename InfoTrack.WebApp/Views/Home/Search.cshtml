@@ -1,0 +1,27 @@
+﻿@model ResultViewModel
+@{ ViewData["Title"] = "Search Results"; }
+
+<h1>@ViewData["Title"]</h1>
+
+<label>@Model.Search.Query</label>
+<label>@Model.Search.Url</label>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Articles.Any())
+        {
+            @foreach (var article in Model.Articles)
+            {
+                <tr>
+                    <th scope="row">@article.Rank</th>
+                    <td>@article.Uri</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Core", "InfoTrack.Core\InfoTrack.Core.csproj", "{1FDA4E7D-52A3-4081-8E84-928FD0324FC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.ConsoleApp", "InfoTrack.ConsoleApp\InfoTrack.ConsoleApp.csproj", "{CEDC0F17-4072-4378-B5BC-8E74063E2512}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Scraper", "InfoTrack.Scraper\InfoTrack.Scraper.csproj", "{C2D8B7D2-3A53-4717-9537-7D1523D5E2DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Persistence", "InfoTrack.Persistence\InfoTrack.Persistence.csproj", "{11046FF1-3573-4C9D-BB12-C112E96AC420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoTrack.WebApp", "InfoTrack.WebApp\InfoTrack.WebApp.csproj", "{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.WebApp", "InfoTrack.WebApp\InfoTrack.WebApp.csproj", "{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{1FDA4E7D-52A3-4081-8E84-928FD0324FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FDA4E7D-52A3-4081-8E84-928FD0324FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FDA4E7D-52A3-4081-8E84-928FD0324FC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEDC0F17-4072-4378-B5BC-8E74063E2512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEDC0F17-4072-4378-B5BC-8E74063E2512}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEDC0F17-4072-4378-B5BC-8E74063E2512}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEDC0F17-4072-4378-B5BC-8E74063E2512}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2D8B7D2-3A53-4717-9537-7D1523D5E2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2D8B7D2-3A53-4717-9537-7D1523D5E2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D8B7D2-3A53-4717-9537-7D1523D5E2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU

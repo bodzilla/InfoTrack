@@ -1,12 +1,14 @@
 ﻿using System;
 using InfoTrack.Core.Contracts;
 using InfoTrack.Core.Enums;
+using InfoTrack.Core.Helpers;
 
 namespace InfoTrack.Core.Models
 {
     public sealed class Search : IEntity
     {
         private string _query;
+        private string _url;
 
         /// <inheritdoc />
         public int Id { get; set; }
@@ -19,6 +21,16 @@ namespace InfoTrack.Core.Models
             set => _query = value.Trim();
         }
 
-        public Uri Uri { get; set; }
+        public string Url
+        {
+            get => _url;
+            set
+            {
+                _url = value;
+                Uri = new Uri(UriHelper.ToUri(_url));
+            }
+        }
+
+        public Uri Uri { get; private set; }
     }
 }

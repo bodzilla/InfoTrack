@@ -6,6 +6,6 @@ namespace InfoTrack.Core.Contracts
 {
     public interface IScraperService
     {
-        Task<IEnumerable<Article>> FindArticleMatches(Search search);
+        Task<IEnumerable<Article>> FindMatchingArticles(Search search);
     }
 }

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using InfoTrack.Core.Contracts;
-using InfoTrack.Core.Enums;
-using InfoTrack.Core.Helpers;
 using InfoTrack.Core.Models;
 using InfoTrack.WebApp.Models;
+using InfoTrack.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace InfoTrack.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public sealed class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IScraperService _scraperService;
@@ -26,22 +25,21 @@ namespace InfoTrack.WebApp.Controllers
             _articleService = articleService;
         }
 
-        public async Task<ActionResult> Index()
-        {
-            const string query = "land registry searches";
-            const string uri = "www.infotrack.co.uk";
+        public IActionResult Index() => View();
 
-            var search = new Search
+        public async Task<ActionResult> Search(Search search)
+        {
+            search = await _searchService.Add(search);
+            var articles = (await _scraperService.FindMatchingArticles(search)).ToList();
+            foreach (var article in articles) await _articleService.Add(article);
+
+            var resultViewModel = new ResultViewModel
             {
-                SearchEngine = SearchEngine.Google,
-                Query = query,
-                Uri = new Uri(UriHelper.ToUri(uri))
+                Search = search,
+                Articles = articles
             };
 
-            search = await _searchService.Add(search);
-            var articles = await _scraperService.FindArticleMatches(search);
-            foreach (var article in articles) await _articleService.Add(article);
-            return View();
+            return View(resultViewModel);
         }
 
         public IActionResult Privacy() => View();

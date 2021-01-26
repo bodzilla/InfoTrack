@@ -16,15 +16,15 @@ namespace InfoTrack.Persistence
         /// <inheritdoc />
         public async Task<IEnumerable<Search>> GetAll()
         {
-            var result = await _connection.QueryAsync<Search>("SELECT [ID], [SEARCHENGINE], [QUERY], [URI] FROM [DBO].[SEARCHES]");
+            var result = await _connection.QueryAsync<Search>("SELECT [ID], [SEARCHENGINE], [QUERY], [URL] FROM [DBO].[SEARCHES]");
             return result;
         }
 
         /// <inheritdoc />
         public async Task<Search> Add(Search item)
         {
-            const string command = @"INSERT INTO [DBO].[SEARCHES] ([SEARCHENGINE], [QUERY], [URI]) OUTPUT INSERTED.ID VALUES (@SearchEngine, @Query, @Uri)";
-            var id = await _connection.ExecuteScalarAsync<int>(command, new { SearchEngine = item.SearchEngine, Query = item.Query, Uri = item.Uri.OriginalString });
+            const string command = @"INSERT INTO [DBO].[SEARCHES] ([SEARCHENGINE], [QUERY], [URL]) OUTPUT INSERTED.ID VALUES (@SearchEngine, @Query, @Url)";
+            var id = await _connection.ExecuteScalarAsync<int>(command, new { SearchEngine = item.SearchEngine, Query = item.Query, Url = item.Url });
             item.Id = id;
             return item;
         }

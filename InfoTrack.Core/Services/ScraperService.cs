@@ -15,16 +15,16 @@ namespace InfoTrack.Core.Services
         public ScraperService(IScraper scraper) => _scraper = scraper;
 
         /// <inheritdoc />
-        public async Task<IEnumerable<Article>> FindArticleMatches(Search search)
+        public async Task<IEnumerable<Article>> FindMatchingArticles(Search search)
         {
             var articles = new List<Article>();
+            var baseUrl = UriHelper.ToBaseUrl(search.Uri);
             var scrapedArticles = await _scraper.GetArticles(search.Query);
 
             for (int i = 0; i < scrapedArticles.Count; i++)
             {
                 var scrapedUrl = scrapedArticles[i].SelectSingleNode(@"./a").Attributes[0].Value;
                 var scrapedTitle = HttpUtility.HtmlDecode(scrapedArticles[i].InnerText);
-                var baseUrl = search.Uri.Host[4..];
 
                 if (!scrapedUrl.Contains(baseUrl, StringComparison.CurrentCultureIgnoreCase)) continue;
 
@@ -33,7 +33,7 @@ namespace InfoTrack.Core.Services
                     Search = search,
                     Title = scrapedTitle,
                     Rank = i + 1, // Users will count starting from 1, not 0.
-                    Uri = new Uri(UriHelper.ToUri(scrapedUrl))
+                    Uri = new Uri(scrapedUrl)
                 };
 
                 articles.Add(article);

@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Search
+@{ ViewData["Title"] = "Search"; }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form asp-action="Search" class="row">
+    <div class="form-group">
+        <label asp-for="Query"></label>
+        <input asp-for="Query" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Url"></label>
+        <input asp-for="Url" type="text" class="form-control">
+        <span asp-validation-for="Query" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SearchEngine"></label>
+        <select asp-for="SearchEngine" class="form-control" asp-items="Html.GetEnumSelectList<SearchEngine>()">
+            <option>Select..</option>
+        </select>
+        <span asp-validation-for="SearchEngine" class="text-danger"></span>
+        <div class="form-group">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

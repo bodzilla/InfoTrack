@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.ConsoleApp", "Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Scraper", "InfoTrack.Scraper\InfoTrack.Scraper.csproj", "{C2D8B7D2-3A53-4717-9537-7D1523D5E2DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoTrack.Persistence", "InfoTrack.Persistence\InfoTrack.Persistence.csproj", "{11046FF1-3573-4C9D-BB12-C112E96AC420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Persistence", "InfoTrack.Persistence\InfoTrack.Persistence.csproj", "{11046FF1-3573-4C9D-BB12-C112E96AC420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoTrack.WebApp", "InfoTrack.WebApp\InfoTrack.WebApp.csproj", "{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{11046FF1-3573-4C9D-BB12-C112E96AC420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11046FF1-3573-4C9D-BB12-C112E96AC420}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11046FF1-3573-4C9D-BB12-C112E96AC420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC5FC5B-A9EE-4AAC-82A7-1C50E18B9AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

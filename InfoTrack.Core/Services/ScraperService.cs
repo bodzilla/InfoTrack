@@ -20,6 +20,7 @@ namespace InfoTrack.Core.Services
             var articles = new List<Article>();
             var baseUrl = UriHelper.ToBaseUrl(search.Uri);
             var scrapedArticles = await _scraper.GetArticles(search.Query);
+            if (scrapedArticles == null) return articles;
 
             for (int i = 0; i < scrapedArticles.Count; i++)
             {
